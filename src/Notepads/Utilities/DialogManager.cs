@@ -1,4 +1,9 @@
-﻿namespace Notepads.Utilities
+﻿// ---------------------------------------------------------------------------------------------
+//  Copyright (c) 2019-2024, Jiaqi (0x7c13) Liu. All rights reserved.
+//  See LICENSE file in the project root for license information.
+// ---------------------------------------------------------------------------------------------
+
+namespace Notepads.Utilities
 {
     using System;
     using System.Collections.Generic;
@@ -17,7 +22,7 @@
         {
             try
             {
-                return await OpenDialog(dialog, awaitPreviousDialog);
+                return await OpenDialogInternalAsync(dialog, awaitPreviousDialog);
             }
             catch (Exception ex)
             {
@@ -43,7 +48,7 @@
             return null;
         }
 
-        private static async Task<ContentDialogResult> OpenDialog(NotepadsDialog dialog, bool awaitPreviousDialog)
+        private static async Task<ContentDialogResult> OpenDialogInternalAsync(NotepadsDialog dialog, bool awaitPreviousDialog)
         {
             TaskCompletionSource<bool> currentAwaiter = _dialogAwaiter;
             TaskCompletionSource<bool> nextAwaiter = new TaskCompletionSource<bool>();

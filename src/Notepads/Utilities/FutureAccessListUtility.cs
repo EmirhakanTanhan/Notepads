@@ -1,4 +1,9 @@
-﻿namespace Notepads.Utilities
+﻿// ---------------------------------------------------------------------------------------------
+//  Copyright (c) 2019-2024, Jiaqi (0x7c13) Liu. All rights reserved.
+//  See LICENSE file in the project root for license information.
+// ---------------------------------------------------------------------------------------------
+
+namespace Notepads.Utilities
 {
     using System;
     using System.Collections.Generic;
@@ -10,7 +15,7 @@
 
     public static class FutureAccessListUtility
     {
-        public static async Task<StorageFile> GetFileFromFutureAccessList(string token)
+        public static async Task<StorageFile> GetFileFromFutureAccessListAsync(string token)
         {
             try
             {
@@ -26,11 +31,11 @@
             return null;
         }
 
-        public static async Task<bool> TryAddOrReplaceTokenInFutureAccessList(string token, StorageFile file)
+        public static async Task<bool> TryAddOrReplaceTokenInFutureAccessListAsync(string token, StorageFile file)
         {
             try
             {
-                if (await FileSystemUtility.FileExists(file))
+                if (await FileSystemUtility.FileExistsAsync(file))
                 {
                     StorageApplicationPermissions.FutureAccessList.AddOrReplace(token, file);
                     return true;
@@ -49,7 +54,7 @@
             return false;
         }
 
-        public static int GetFutureAccessListItemCount()
+        private static int GetFutureAccessListItemCount()
         {
             try
             {
